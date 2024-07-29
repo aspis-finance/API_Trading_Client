@@ -1,3 +1,8 @@
+### Aspis trading client setup
+
+First, go to the aspis_onboarding folder, open readme and follow the instructions. 
+After the onboarding is completed, 
+
 ### Basic Trading Algo for Aspis
 
 1. General
