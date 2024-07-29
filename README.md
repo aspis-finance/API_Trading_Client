@@ -1,7 +1,7 @@
 ### Aspis trading client setup
 
 First, go to the aspis_onboarding folder, open readme and follow the instructions. 
-After the onboarding is completed, 
+After the onboarding is completed and your vault address is generated, you can proceed to the trading client setup. 
 
 ### Basic Trading Algo for Aspis
 
