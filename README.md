@@ -3,6 +3,40 @@
 First, go to the aspis_onboarding folder, open readme and follow the instructions. 
 After the onboarding is completed and your vault address is generated, you can proceed to the trading client setup. 
 
+### Contents
+1. Trading algo description.
+2. Config setup.
+3. Run commands.
+
+### Setup description
+Go to modules folder and open config.ini. Paste your api_key received from Aspis team into the config. Paste your vault address you got running the onboarding script into the config. Well done! You can run the trading algo using the following docker commands. If you want to learn more about the strategy and modify it, read the trading algo description.
+
+### How to run strategy in a Docker Container
+
+## docker container build:
+sudo docker build -t aspis_trade_bot_alpha_strat_1 .
+
+## docker container run:
+sudo docker run -d --restart always --name aspis_trade_bot_alpha_container_strat_1 --log-opt max-size=10m --log-opt max-file=3 aspis_trade_bot_alpha_strat_1
+
+## to stop container:
+sudo docker stop aspis_trade_bot_alpha_container_strat_1
+
+## to remove container:
+sudo docker rm aspis_trade_bot_alpha_container_strat_1
+
+## RESTART(4 commands: stop, remove, build, run):
+sudo docker stop aspis_trade_bot_alpha_container_strat_1 && sudo docker rm aspis_trade_bot_alpha_container_strat_1 && sudo docker build -t aspis_trade_bot_alpha_strat_1 . && sudo docker run -d --restart always --name aspis_trade_bot_alpha_container_strat_1 --log-opt max-size=10m --log-opt max-file=3 aspis_trade_bot_alpha_strat_1 && exit
+
+## to kill container:
+sudo docker kill aspis_trade_bot_alpha_container_strat_1
+
+## logs:
+sudo docker logs aspis_trade_bot_alpha_container_strat_1
+
+## enter:
+docker exec -it aspis_trade_bot_alpha_container_strat_1 bash
+
 ### Basic Trading Algo for Aspis
 
 1. General
@@ -101,30 +135,3 @@ This class handles order events, uses our simple Aspis API connector to execute 
 
 **12. Risk Manager**
 This class reads our position data and price updates from data storage. If the current price is lower than stop loss or higher than take profit, it generates orders to close our open positions.
-
-
-### How to run strategy in a Docker Container
-
-## docker container build:
-sudo docker build -t aspis_trade_bot_alpha_strat_1 .
-
-## docker container run:
-sudo docker run -d --restart always --name aspis_trade_bot_alpha_container_strat_1 --log-opt max-size=10m --log-opt max-file=3 aspis_trade_bot_alpha_strat_1
-
-## to stop container:
-sudo docker stop aspis_trade_bot_alpha_container_strat_1
-
-## to remove container:
-sudo docker rm aspis_trade_bot_alpha_container_strat_1
-
-## RESTART(4 commands: stop, remove, build, run):
-sudo docker stop aspis_trade_bot_alpha_container_strat_1 && sudo docker rm aspis_trade_bot_alpha_container_strat_1 && sudo docker build -t aspis_trade_bot_alpha_strat_1 . && sudo docker run -d --restart always --name aspis_trade_bot_alpha_container_strat_1 --log-opt max-size=10m --log-opt max-file=3 aspis_trade_bot_alpha_strat_1 && exit
-
-## to kill container:
-sudo docker kill aspis_trade_bot_alpha_container_strat_1
-
-## logs:
-sudo docker logs aspis_trade_bot_alpha_container_strat_1
-
-## enter:
-docker exec -it aspis_trade_bot_alpha_container_strat_1 bash
