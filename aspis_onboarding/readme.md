@@ -2,7 +2,8 @@
 This guide will help you to onboard and use Aspis API.
 
 ## 1. API key
-First of all, get your API key from Aspis team. Then, go to config.ini in this folder and paste your API key to line 3: api_key = your_key_12345
+First of all, get your API key from Aspis team. You can fill in the form here: https://forms.gle/QgEcbbwXHctr1Hiz7 or reach by email info@aspis.finance
+Then, go to config.ini in this folder and paste your API key to line 3: api_key = your_key_12345
 
 ## 2. Configure your vault
 Go to config.ini and set all parameters for your vault. 
