@@ -104,7 +104,7 @@ class Aspis_API_client:
             print(key, '___', value)
         '''
         r = requests.post(url, json=params, headers=headers)
-        #print(type(r), r.status_code, r.headers, r.encoding, r.content)
+        print(type(r), r.status_code, r.headers, r.encoding, r.content)
 
         vault = self.parse_response_create_vault(r)
         return vault
@@ -135,22 +135,26 @@ class Aspis_API_client:
         config = self.read_config()
         config = self.convert_time(config)
         vault = self.create_vault(config)
-        print('finish, vault created: ', vault)
+        print('finish, vault created: ', vault.lower())
 
         with open('/app/config/vault.json', 'w') as f:
             f.write(vault.strip())        
 
     def convert_time(self, config):
         #convert time to unix format
-        now = datetime.utcnow()
+        now = datetime.utcnow().replace(microsecond=0) 
         delta_1 = timedelta(hours=int(config['general']['start_fundraising_in']))
         delta_2 = timedelta(hours=int(config['general']['end_fundraising_in']))
         
         start = now + delta_1
         end = now + delta_2
 
-        start = time.mktime(start.timetuple()) * 1000
-        end = time.mktime(end.timetuple()) * 1000
+        print(f'convert_time start: {start} end: {end}')
+
+        start = time.mktime(start.timetuple())
+        end = time.mktime(end.timetuple()) 
+
+        print(f'convert_time start: {start} end: {end}')
 
         #print(now, delta_1, delta_2, start, end)
 
@@ -163,5 +167,4 @@ class Aspis_API_client:
     
 
 if __name__ == '__main__':
-    test = Aspis_API_client()
-    test.run()
+    pass
